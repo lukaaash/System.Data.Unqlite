@@ -15,7 +15,7 @@ namespace System.Data.Unqlite.Interop
 
         static Libunqlite()
         {
-			NativeLib = NativeLibrary.Load(LibraryName);
+            NativeLib = NativeLibrary.Load(LibraryName, NativeLibraryLoadOptions.SearchAll);
             AssignCommonDelegates();
         }
 

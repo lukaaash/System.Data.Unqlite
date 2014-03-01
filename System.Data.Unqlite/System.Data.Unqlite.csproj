@@ -49,7 +49,10 @@
     <Compile Include="Unqlite_Open.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="unqlite.dll">
+    <Content Include="unqlite32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="unqlite64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
