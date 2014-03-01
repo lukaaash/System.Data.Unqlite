@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using Nuane.Interop;
 
 namespace System.Data.Unqlite.Interop
 {
@@ -10,38 +11,38 @@ namespace System.Data.Unqlite.Interop
     {
         public const string LibraryName = "unqlite";
 
-        private static readonly UnmanagedLibrary NativeLib;
+		private static readonly NativeLibrary NativeLib;
 
         static Libunqlite()
         {
-            NativeLib = new UnmanagedLibrary(LibraryName);
+			NativeLib = NativeLibrary.Load(LibraryName);
             AssignCommonDelegates();
         }
 
         private static void AssignCommonDelegates()
         {
-            unqlite_open = NativeLib.GetUnmanagedFunction<Unqlite_open>("unqlite_open");
-            unqlite_kv_store = NativeLib.GetUnmanagedFunction<Unqlite_kv_store>("unqlite_kv_store");
-            unqlite_close = NativeLib.GetUnmanagedFunction<Unqlite_close>("unqlite_close");
-            unqlite_kv_fetch = NativeLib.GetUnmanagedFunction<Unqlite_kv_fetch>("unqlite_kv_fetch");
-            unqlite_kv_append = NativeLib.GetUnmanagedFunction<Unqlite_kv_append>("unqlite_kv_append");
-            unqlite_kv_fetch_callback = NativeLib.GetUnmanagedFunction<Unqlite_kv_fetch_callback>("unqlite_kv_fetch_callback");
-            unqlite_kv_cursor_init = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_init>("unqlite_kv_cursor_init");
-            unqlite_kv_cursor_first_entry = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_first_entry>("unqlite_kv_cursor_first_entry");
-            unqlite_kv_cursor_last_entry = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_last_entry>("unqlite_kv_cursor_last_entry");
-            unqlite_kv_cursor_valid_entry = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_valid_entry>("unqlite_kv_cursor_valid_entry");
-            unqlite_kv_cursor_next_entry = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_next_entry>("unqlite_kv_cursor_next_entry");
-            unqlite_kv_cursor_prev_entry = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_prev_entry>("unqlite_kv_cursor_prev_entry");
-            unqlite_kv_cursor_release = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_release>("unqlite_kv_cursor_release");
-            unqlite_kv_cursor_reset = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_reset>("unqlite_kv_cursor_reset");
+            unqlite_open = NativeLib.GetDelegate<Unqlite_open>("unqlite_open");
+            unqlite_kv_store = NativeLib.GetDelegate<Unqlite_kv_store>("unqlite_kv_store");
+            unqlite_close = NativeLib.GetDelegate<Unqlite_close>("unqlite_close");
+            unqlite_kv_fetch = NativeLib.GetDelegate<Unqlite_kv_fetch>("unqlite_kv_fetch");
+            unqlite_kv_append = NativeLib.GetDelegate<Unqlite_kv_append>("unqlite_kv_append");
+            unqlite_kv_fetch_callback = NativeLib.GetDelegate<Unqlite_kv_fetch_callback>("unqlite_kv_fetch_callback");
+            unqlite_kv_cursor_init = NativeLib.GetDelegate<Unqlite_kv_cursor_init>("unqlite_kv_cursor_init");
+            unqlite_kv_cursor_first_entry = NativeLib.GetDelegate<Unqlite_kv_cursor_first_entry>("unqlite_kv_cursor_first_entry");
+            unqlite_kv_cursor_last_entry = NativeLib.GetDelegate<Unqlite_kv_cursor_last_entry>("unqlite_kv_cursor_last_entry");
+            unqlite_kv_cursor_valid_entry = NativeLib.GetDelegate<Unqlite_kv_cursor_valid_entry>("unqlite_kv_cursor_valid_entry");
+            unqlite_kv_cursor_next_entry = NativeLib.GetDelegate<Unqlite_kv_cursor_next_entry>("unqlite_kv_cursor_next_entry");
+            unqlite_kv_cursor_prev_entry = NativeLib.GetDelegate<Unqlite_kv_cursor_prev_entry>("unqlite_kv_cursor_prev_entry");
+            unqlite_kv_cursor_release = NativeLib.GetDelegate<Unqlite_kv_cursor_release>("unqlite_kv_cursor_release");
+            unqlite_kv_cursor_reset = NativeLib.GetDelegate<Unqlite_kv_cursor_reset>("unqlite_kv_cursor_reset");
 
-            unqlite_kv_cursor_key = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_key>("unqlite_kv_cursor_key");
-            unqlite_kv_cursor_key_callback = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_key_callback>("unqlite_kv_cursor_key_callback");
-            unqlite_kv_cursor_data = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_data>("unqlite_kv_cursor_data");
-            unqlite_kv_cursor_data_callback = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_data_callback>("unqlite_kv_cursor_data_callback");
-            unqlite_kv_cursor_seek = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_seek>("unqlite_kv_cursor_seek");
+            unqlite_kv_cursor_key = NativeLib.GetDelegate<Unqlite_kv_cursor_key>("unqlite_kv_cursor_key");
+            unqlite_kv_cursor_key_callback = NativeLib.GetDelegate<Unqlite_kv_cursor_key_callback>("unqlite_kv_cursor_key_callback");
+            unqlite_kv_cursor_data = NativeLib.GetDelegate<Unqlite_kv_cursor_data>("unqlite_kv_cursor_data");
+            unqlite_kv_cursor_data_callback = NativeLib.GetDelegate<Unqlite_kv_cursor_data_callback>("unqlite_kv_cursor_data_callback");
+            unqlite_kv_cursor_seek = NativeLib.GetDelegate<Unqlite_kv_cursor_seek>("unqlite_kv_cursor_seek");
 
-            unqlite_kv_cursor_delete_entry = NativeLib.GetUnmanagedFunction<Unqlite_kv_cursor_delete_entry>("unqlite_kv_cursor_delete_entry");
+            unqlite_kv_cursor_delete_entry = NativeLib.GetDelegate<Unqlite_kv_cursor_delete_entry>("unqlite_kv_cursor_delete_entry");
         }
 
         public delegate int xConsumer(IntPtr dataPointer, UInt64 iDataLen, byte[] pUserData);

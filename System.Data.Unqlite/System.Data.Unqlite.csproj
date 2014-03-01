@@ -40,11 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interop\Libunqlite.cs" />
-    <Compile Include="Interop\ManifestResource.cs" />
-    <Compile Include="Interop\Platform.NET.cs" />
-    <Compile Include="Interop\SafeLibraryHandle.cs" />
-    <Compile Include="Interop\Tracer.cs" />
-    <Compile Include="Interop\UnmanagedLibrary.cs" />
+    <Compile Include="Interop\NativeLibrary.cs" />
     <Compile Include="Interop\UnqliteDBProxy.cs" />
     <Compile Include="KeyValueCursor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,9 +52,6 @@
     <Content Include="unqlite.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Interop\Platform.Windows.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
